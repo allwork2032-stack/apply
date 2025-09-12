@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <title>চাকুরীর আবেদন ফর্ম</title>
+</head>
+<body>
+  <h1>চাকুরীর আবেদন ফর্ম</h1>
+  <form action="/apply" method="POST" enctype="multipart/form-data">
+    <label>নাম:</label><br />
+    <input type="text" name="name" required /><br /><br />
+
+    <label>ইমেইল:</label><br />
+    <input type="email" name="email" required /><br /><br />
+
+    <label>মোবাইল:</label><br />
+    <input type="text" name="phone" required /><br /><br />
+
+    <label>আবেদনকৃত পদ:</label><br />
+    <input type="text" name="position" required /><br /><br />
+
+    <label>সিভি (PDF):</label><br />
+    <input type="file" name="cv" accept=".pdf" /><br /><br />
+
+    <button type="submit">জমা দিন</button>
+  </form>
+</body>
+</html>
