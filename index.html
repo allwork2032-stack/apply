@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8 mx-auto text-center">
+        <h2 class="mb-3">সরকারী চাকুরীতে আবেদন করুন</h2>
+        <p class="lead">বাংলাদেশ সরকারের বিভিন্ন মন্ত্রণালয় ও বিভাগে প্রকাশিত চাকুরীর বিজ্ঞপ্তিতে অনলাইনে আবেদন করুন</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <h3 class="border-bottom pb-2">সর্বশেষ চাকুরীর বিজ্ঞপ্তি</h3>
+    </div>
+</div>
+
+<div class="row mt-3">
+    {% if jobs %}
+        {% for job in jobs %}
+        <div class="col-md-6 mb-4">
+            <div class="card job-card h-100">
+                <div class="card-body">
+                    <h5 class="card-title">{{ job[1] }}</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">{{ job[2] }}</h6>
+                    <p class="card-text">
+                        <small class="text-muted">বিজ্ঞপ্তি নং: {{ job[3] }}</small><br>
+                        <small>আবেদনের শেষ তারিখ: {{ job[5] }}</small><br>
+                        <small>আবেদন ফি: {{ job[9] }} টাকা</small>
+                    </p>
+                </div>
+                <div class="card-footer bg-transparent">
+                    <a href="/job/{{ job[0] }}" class="btn btn-sm btn-outline-primary">বিস্তারিত</a>
+                    {% if session.user_id %}
+                    <a href="/apply/{{ job[0] }}" class="btn btn-sm btn-primary">আবেদন করুন</a>
+                    {% else %}
+                    <a href="/login" class="btn btn-sm btn-primary">আবেদন করতে লগইন করুন</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info">বর্তমানে কোন চাকুরীর বিজ্ঞপ্তি নেই</div>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
